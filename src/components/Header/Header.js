@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Avatar } from "@material-ui/core";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+import Logout from "./Logout.js";
 import helpicon from "../../images/help.png";
 import telegram from "../../images/telegramletter.png";
 // styles
@@ -34,7 +35,7 @@ export default function Header() {
         </Button>
         <Avatar alt="help" src={helpicon} className={classes.avatarSize} />
         <Avatar alt="telegram" src={telegram} className={classes.avatarSize} />
-        <ExitToAppIcon className={classes.avatarSize} />
+        <Logout />
       </div>
     </div>
   );

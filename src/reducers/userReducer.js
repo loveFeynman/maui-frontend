@@ -14,6 +14,12 @@ const reducer = (state = initialState, action) => {
     };
   } else if (action.type === "LOGIN_FAILURE") {
     return state;
+  } else if (action.type === "LOGOUT") {
+    localStorage.removeItem("idToken");
+    return {
+      ...state,
+      isAuthenticated: false,
+    };
   } else return state;
 };
 export default reducer;
