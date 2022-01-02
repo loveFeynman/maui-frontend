@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.js": "./static/js/main.b73bad72.chunk.js",
+    "main.js.map": "./static/js/main.b73bad72.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.e1de4c39.js",
+    "runtime-main.js.map": "./static/js/runtime-main.e1de4c39.js.map",
+    "static/css/2.68b64559.chunk.css": "./static/css/2.68b64559.chunk.css",
+    "static/js/2.56397850.chunk.js": "./static/js/2.56397850.chunk.js",
+    "static/js/2.56397850.chunk.js.map": "./static/js/2.56397850.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.68b64559.chunk.css.map": "./static/css/2.68b64559.chunk.css.map",
+    "static/js/2.56397850.chunk.js.LICENSE.txt": "./static/js/2.56397850.chunk.js.LICENSE.txt",
+    "static/media/MAUI-mark.84ca2d42.svg": "./static/media/MAUI-mark.84ca2d42.svg",
+    "static/media/MauiCard1.cdbf9055.png": "./static/media/MauiCard1.cdbf9055.png",
+    "static/media/MauiCard2.9cc4fb49.png": "./static/media/MauiCard2.9cc4fb49.png",
+    "static/media/borrow.b2fb236a.png": "./static/media/borrow.b2fb236a.png",
+    "static/media/cards.37bb230d.png": "./static/media/cards.37bb230d.png",
+    "static/media/earn.82622ed4.png": "./static/media/earn.82622ed4.png",
+    "static/media/footer.20dbbb10.png": "./static/media/footer.20dbbb10.png",
+    "static/media/google.bbce75f8.svg": "./static/media/google.bbce75f8.svg",
+    "static/media/logo.d0e27845.svg": "./static/media/logo.d0e27845.svg",
+    "static/media/spinner.757857ce.gif": "./static/media/spinner.757857ce.gif",
+    "static/media/stocks.0dc1d110.png": "./static/media/stocks.0dc1d110.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e1de4c39.js",
+    "static/css/2.68b64559.chunk.css",
+    "static/js/2.56397850.chunk.js",
+    "static/js/main.b73bad72.chunk.js"
+  ]
+}
