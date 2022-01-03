@@ -1,5 +1,5 @@
 export const appConfig = {
-  apiUrl: "https://maui-backend-app.herokuapp.com/",
+  apiUrl: "http://node-maui-env.eba-adke24ex.us-east-2.elasticbeanstalk.com/",
   userPoolId:
     process.env.REACT_APP_COGNITO_USERPOOL_ID || "us-west-2_4zMJrFJnK",
   clientId:
