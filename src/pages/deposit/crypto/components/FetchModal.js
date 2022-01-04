@@ -71,6 +71,7 @@ export default function FetchModal(props) {
       toast.success("Transaction success");
       dispatch(getWalletInfo(to));
     } catch (error) {
+      setLoading(false);
       toast.error("Transaction fails");
     }
   };

@@ -26,7 +26,7 @@ export default function Crypto(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
+  console.log("availableConnectTypes", availableConnectTypes);
   return (
     <div className={classes.tabBody}>
       <div className={classes.boxtitle}>
@@ -78,7 +78,7 @@ export default function Crypto(props) {
             variant="contained"
             color="primary"
             className={classes.confirmbutton}
-            disabled="true"
+            disabled={true}
           >
             Initializing...
           </Button>
