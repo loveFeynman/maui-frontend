@@ -26,6 +26,7 @@ export default makeStyles((theme) => ({
     border: "none",
     position: "relative",
     paddingRight: 20,
+    zIndex: "10",
     "@media (max-width:600px)": {
       width: "100vw",
       height: 490,

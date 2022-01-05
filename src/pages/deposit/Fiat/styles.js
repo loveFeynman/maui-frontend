@@ -73,6 +73,20 @@ export default makeStyles((theme) => ({
     boxShadow: "4px 7px 12px rgba(0, 0, 0, 0.1)",
     background: "linear-gradient(96.31deg, #A3D8F5 3.54%, #62B8E8 77.74%)",
   },
+  disabledbutton: {
+    "@media (max-width:600px)": {
+      width: "100%",
+    },
+    height: 50,
+    width: 384,
+    marginTop: "20px",
+    borderRadius: 16,
+    boxShadow: "4px 7px 12px rgba(0, 0, 0, 0.1)",
+    background: "grey",
+    "@media (max-width:600px)": {
+      width: "100%",
+    },
+  },
   firstpart: {
     width: 440,
     "@media (max-width:600px)": {
