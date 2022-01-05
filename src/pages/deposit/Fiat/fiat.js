@@ -21,18 +21,18 @@ import useStyles from "./styles";
 import transakSDK from "@transak/transak-sdk";
 
 const currencies = [
-  {
-    value: "USD",
-    label: "$ USD",
-  },
+  // {
+  //   value: "USD",
+  //   label: "$ USD",
+  // },
   {
     value: "EUR",
     label: "€ EUR",
   },
-  {
-    value: "BTC",
-    label: "฿ BTC",
-  },
+  // {
+  //   value: "BTC",
+  //   label: "฿ BTC",
+  // },
   {
     value: "JPY",
     label: "¥ JPY",
@@ -40,9 +40,10 @@ const currencies = [
 ];
 export default function Fiat(props) {
   var classes = useStyles();
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState(currencies[0].value);
   const [fee, setfee] = useState(0);
   const [feecheck, setfeecheck] = useState(true);
+  const [agree, setAgree] = useState(false);
   const [amount, setamount] = useState(0);
   const accAddress = useSelector((state) => state.user.user.accAddress);
 
@@ -56,6 +57,7 @@ export default function Fiat(props) {
   };
 
   const buyCrypto = () => {
+    if (!agree) return;
     let transak = new transakSDK({
       apiKey: "34e9c772-b44d-4ab8-a702-9f62ea910d1b", // Your API Key
       environment: "STAGING", // STAGING/PRODUCTION
@@ -128,7 +130,7 @@ export default function Fiat(props) {
           }
           className={classes.select}
         />
-        <div className={classes.pricetext}>
+        {/* <div className={classes.pricetext}>
           <span
             style={{
               color: "blue",
@@ -151,16 +153,19 @@ export default function Fiat(props) {
             You will get
           </span>
           <span style={{ fontWeight: "bold" }}>{amount - fee}</span>
-        </div>
+        </div> */}
         <FormControlLabel
           className={classes.checkbox}
-          control={<Checkbox defaultChecked name="gilad" />}
+          control={<Checkbox checked={agree} name="gilad" />}
+          onChange={(e) => {
+            setAgree(!agree);
+          }}
           label="I Agree with Terms and conditions"
         />
         <Button
           variant="contained"
           color="primary"
-          className={classes.confirmbutton}
+          className={agree ? classes.confirmbutton : classes.disabledbutton}
           onClick={buyCrypto}
         >
           CONFIRM
