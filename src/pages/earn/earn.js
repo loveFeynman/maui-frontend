@@ -121,19 +121,25 @@ export default function Earn(props) {
         const ustBalance = new Dec(values[0].balance).mul(
           values[1].exchange_rate,
         );
+
         const annualizedInterestRate = new Dec(values[2].deposit_rate)
           .mul(BLOCKSPERYEAR)
           .sub(FEE);
+
         const interest = ustBalance
           .mul(annualizedInterestRate)
           .div(MICRO)
           .toNumber();
+
         setMarketExchangeRate(values[1].exchange_rate);
+
+        console.log("aust", values[0].balance, values[1].exchange_rate);
+
         setAustVal(values[0].balance);
         setAnnaulExpectedInterest(interest);
         setanchoraccount(
           new Dec(values[0].balance)
-            .mul(marketExchangeRate)
+            .mul(values[1].exchange_rate)
             .div(MICRO)
             .toFixed(2),
         );

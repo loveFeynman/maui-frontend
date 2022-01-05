@@ -17,6 +17,7 @@
     "@mdi/react": "^1.4.0",
     "@terra-money/terra.js": "^3.0.1",
     "@terra-money/wallet-provider": "^3.6.0",
+    "@transak/transak-sdk": "^1.0.31",
     "apexcharts": "^3.24.0",
     "axios": "^0.24.0",
     "classnames": "^2.2.6",

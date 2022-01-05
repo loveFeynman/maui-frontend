@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import {
   Button,
   Input,
@@ -15,6 +17,9 @@ import {
 import bank from "../../../images/bank.png";
 // styles
 import useStyles from "./styles";
+
+import transakSDK from "@transak/transak-sdk";
+
 const currencies = [
   {
     value: "USD",
@@ -39,13 +44,37 @@ export default function Fiat(props) {
   const [fee, setfee] = useState(0);
   const [feecheck, setfeecheck] = useState(true);
   const [amount, setamount] = useState(0);
+  const accAddress = useSelector((state) => state.user.user.accAddress);
+
   useEffect(() => {
     if (feecheck) setfee(amount / 50);
     else setfee(0);
   }, [feecheck, amount]);
+
   const currencyChange = (event) => {
     setCurrency(event.target.value);
   };
+
+  const buyCrypto = () => {
+    let transak = new transakSDK({
+      apiKey: "34e9c772-b44d-4ab8-a702-9f62ea910d1b", // Your API Key
+      environment: "STAGING", // STAGING/PRODUCTION
+      defaultCryptoCurrency: "UST",
+      network: "terra",
+      walletAddress: accAddress, // Your customer's wallet address
+      themeColor: "#536DFE", // App theme color
+      fiatCurrency: currency, // INR/GBP
+      fiatAmount: amount,
+      // email: "", // Your customer's email address
+      redirectURL: "",
+      hostURL: window.location.origin,
+      widgetHeight: "550px",
+      widgetWidth: "450px",
+    });
+
+    transak.init();
+  };
+
   return (
     <div className={classes.tabBody}>
       <div className={classes.firstpart}>
@@ -132,6 +161,7 @@ export default function Fiat(props) {
           variant="contained"
           color="primary"
           className={classes.confirmbutton}
+          onClick={buyCrypto}
         >
           CONFIRM
         </Button>
