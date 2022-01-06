@@ -30,7 +30,7 @@ export default makeStyles((theme) => ({
   },
   cardpart: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     "@media (max-width:600px)": {
       flexDirection: "column",
     },
@@ -72,7 +72,7 @@ export default makeStyles((theme) => ({
   card: {
     display: "flex",
     flexDirection: "column",
-    width: "50%",
+    width: 340,
     padding: 10,
     marginTop: 30,
     "@media (max-width:600px)": {

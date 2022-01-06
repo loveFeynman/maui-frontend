@@ -15,17 +15,6 @@ export default makeStyles((theme) => ({
 
   mainboard: {
     position: "relative",
-    width: 717,
-    height: "100%",
-    padding: "20px",
-    "@media (max-width:600px)": {
-      width: "100vw",
-      padding: "10px",
-      alignItems: "center",
-    },
-  },
-  stocksboard: {
-    position: "relative",
     width: 1079,
     height: "100%",
     "@media (max-width:600px)": {

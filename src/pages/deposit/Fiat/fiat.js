@@ -171,27 +171,6 @@ export default function Fiat(props) {
           CONFIRM
         </Button>
       </div>
-      <div className={classes.secondpart}>
-        <div className={classes.boxtitle} style={{ fontWeight: "bold" }}>
-          Important
-        </div>
-        <div className={classes.description}>
-          Lorem ipsum doior sit amet, consectetur adipiscing slit. Phansellus ut
-          ipsum aliquet, sodales magna sed, vulputate tortor. Quisque rutrnm
-          ipsum in dolor faucibus pretuim. integer eros enim tincidunt at
-          maximus vitae, euismod sod lorem. Vivamus non aliquam dul.
-        </div>
-
-        <div className={classes.boxtitle} style={{ fontWeight: "bold" }}>
-          Important
-        </div>
-        <div className={classes.description}>
-          Lorem ipsum doior sit amet, consectetur adipiscing slit. Phansellus ut
-          ipsum aliquet, sodales magna sed, vulputate tortor. Quisque rutrnm
-          ipsum in dolor faucibus pretuim. integer eros enim tincidunt at
-          maximus vitae, euismod sod lorem. Vivamus non aliquam dul.
-        </div>
-      </div>
     </div>
   );
 }

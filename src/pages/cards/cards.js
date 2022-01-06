@@ -11,7 +11,7 @@ import useStyles from "./styles";
 
 export default function Earn(props) {
   const isFull = useSelector((state) => state.sidebar.isDefault);
-  const account = useSelector((state) => state.user.account);
+  const account = useSelector((state) => state.wallet.walletInfo);
 
   var classes = useStyles();
   return (
@@ -26,7 +26,7 @@ export default function Earn(props) {
       )}
       {isFull && (
         <div style={{ fontSize: 30, marginBottom: 20 }}>
-          $<span style={{ fontWeight: 600 }}>{account}</span>USD
+          USD<span style={{ fontWeight: 600 }}>{account}</span>
         </div>
       )}
       <div className={classes.context}>
@@ -36,13 +36,13 @@ export default function Earn(props) {
             <img
               src={firstcard}
               alt="card1"
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: 313, height: 194 }}
             />
             <div className={classes.cardtitle}>eCard</div>
             <div className={classes.cardtext}>
-              Make deposits and receive 15% per yield, that's better return than
+              Make deposits and receive 18% per yield, that's better return than
               most Hedge Funds and Superannuations across the globe. Borrow up
-              to 25% of your collateral instantly and you will receive 10%
+              to 50% of your collateral instantly and you will receive 10%
               return per year.
             </div>
             <Button className={classes.confirmbutton}>eCard</Button>
@@ -51,7 +51,7 @@ export default function Earn(props) {
             <img
               src={secondcard}
               alt="card2"
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: 313, height: 194 }}
             />
             <div className={classes.cardtitle}>Titanium Card</div>
             <div className={classes.cardtext}>

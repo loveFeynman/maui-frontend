@@ -44,7 +44,7 @@ export default makeStyles((theme) => ({
   },
   amount: {
     backgroundColor: "white",
-    width: 270,
+    width: 470,
     height: 50,
     borderRadius: "13px",
     "@media (max-width:600px)": {
@@ -52,7 +52,7 @@ export default makeStyles((theme) => ({
     },
   },
   period: {
-    width: 250,
+    width: 450,
     height: 50,
     borderRadius: 13,
     boxShadow:
@@ -82,7 +82,7 @@ export default makeStyles((theme) => ({
       "-2px -4px 4px rgba(255, 255, 255, 0.4), 2px 4px 10px rgba(0, 0, 0, 0.1)",
   },
   interest: {
-    width: 237,
+    width: 437,
     height: 50,
     borderRadius: 12,
     marginRight: 40,

@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 // icons
 import { Menu as MenuIcon } from "@material-ui/icons";
-
+import functionPlot from "function-plot";
 import CustomSlider from "./slider";
 // styles
 import useStyles from "./styles";
@@ -22,6 +22,27 @@ export default function Earn(props) {
   const [value, setValue] = useState(0);
   const tabChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const valueChanged = (collateral, borrowed, apy) => {
+    functionPlot({
+      target: "#plot",
+      width: 370,
+      height: 270,
+      yAxis: {
+        label: "Remaining Debt",
+        domain: [0, 50],
+      },
+      xAxis: {
+        label: "X axis",
+        domain: [0, 30],
+      },
+      data: [
+        {
+          fn: `${(-collateral / 1200) * apy}x + ${borrowed / 2}`,
+        },
+      ],
+      disableZoom: true,
+    });
   };
   return (
     <div>
@@ -36,7 +57,7 @@ export default function Earn(props) {
       <div className={classes.header}>
         {isFull && (
           <div style={{ fontSize: 30, marginBottom: 20 }}>
-            $<span style={{ fontWeight: 600 }}>{account}</span>USD
+            USD<span style={{ fontWeight: 600 }}>{account}</span>
           </div>
         )}
         <div
@@ -52,7 +73,7 @@ export default function Earn(props) {
           }}
         >
           You can borrow up to{" "}
-          <span style={{ fontSize: 24, fontWeight: 600 }}>$1,616</span>
+          <span style={{ fontSize: 24, fontWeight: 600 }}>USD1,616</span>
         </div>
       </div>
       <div className={classes.tabbar}>
@@ -122,12 +143,8 @@ export default function Earn(props) {
             </div>
           </div>
           <div className={classes.chartblock}>
-            <div className={classes.slider}>
-              <CustomSlider title="Collateral:" value="5000" />
-              <CustomSlider title="Borrowed:" value="2500" />
-              <CustomSlider title="APY:" value="18%" />
-            </div>
-            <div className={classes.chart}></div>
+            <CustomSlider onChange={valueChanged} />
+            <div className={classes.chart} id="plot"></div>
           </div>
         </div>
       )}

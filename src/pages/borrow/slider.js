@@ -23,6 +23,23 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     justifyContent: "center",
   },
+  slider: {
+    width: 228,
+    height: 300,
+    background: "#EBEBF8",
+    borderRadius: 10,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginBottom: 20,
+    boxShadow:
+      "-9px -13px 37px rgba(255, 255, 255, 0.8), 9px 17px 37px rgba(0, 0, 0, 0.13)",
+    "@media (max-width:600px)": {
+      alignSelf: "center",
+      width: "100%",
+    },
+  },
 }));
 
 const PrettoSlider = withStyles({
@@ -54,18 +71,54 @@ const PrettoSlider = withStyles({
 
 const CustomSlider = (props) => {
   const classes = useStyles();
-  const { title, value } = props;
+  // const { title, value } = props;
+  const [collateral, setcollateral] = React.useState(0);
+  const [borrowed, setborrowed] = React.useState(0);
+  const [apy, setapy] = React.useState(0);
+  React.useEffect(() => {
+    props.onChange(collateral, borrowed, apy);
+  }, [collateral, borrowed, apy]);
   return (
-    <div className={classes.root}>
-      <div className={classes.header}>
-        <div className={classes.title}>{title}</div>
-        <div className={classes.rounded}>{value}</div>
+    <div>
+      <div className={classes.slider}>
+        <div className={classes.root}>
+          <div className={classes.header}>
+            <div className={classes.title}>Collateral</div>
+            <div className={classes.rounded}>{collateral * 1000}</div>
+          </div>
+          <PrettoSlider
+            value={collateral}
+            onChange={(e, value) => {
+              setcollateral(value);
+              if (value < borrowed) setborrowed(value);
+            }}
+          />
+        </div>
+        <div className={classes.root}>
+          <div className={classes.header}>
+            <div className={classes.title}>Borrowed</div>
+            <div className={classes.rounded}>{borrowed * 500}</div>
+          </div>
+          <PrettoSlider
+            value={borrowed}
+            onChange={(e, value) => {
+              if (value <= collateral) setborrowed(value);
+            }}
+          />
+        </div>
+        <div className={classes.root}>
+          <div className={classes.header}>
+            <div className={classes.title}>APY</div>
+            <div className={classes.rounded}>{apy / 2}%</div>
+          </div>
+          <PrettoSlider
+            value={apy}
+            onChange={(e, value) => {
+              setapy(value);
+            }}
+          />
+        </div>
       </div>
-      <PrettoSlider
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={20}
-      />
     </div>
   );
 };

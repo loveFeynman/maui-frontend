@@ -90,7 +90,7 @@ export default function Crypto(props) {
             className={classes.confirmbutton}
             onClick={handleOpen}
           >
-            Fetch
+            DEPOSIT
           </Button>
         )}
         <Modal

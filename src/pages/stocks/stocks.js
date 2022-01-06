@@ -9,16 +9,10 @@ import { stockdata } from "./mock";
 
 export default function Earn(props) {
   const isFull = useSelector((state) => state.sidebar.isDefault);
-  const account = useSelector((state) => state.user.account);
   var classes = useStyles();
   return (
     <div>
       {isFull && <div className={classes.title}>Stocks</div>}
-      {isFull && (
-        <div style={{ fontSize: 30, marginBottom: 20 }}>
-          $<span style={{ fontWeight: 600 }}>{account}</span>USD
-        </div>
-      )}
       <div className={classes.mainstock}>
         <div className={classes.maintable}>
           <div className={classes.tablehead}>

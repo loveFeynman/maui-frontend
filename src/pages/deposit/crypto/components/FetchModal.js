@@ -91,7 +91,7 @@ export default function FetchModal(props) {
     <div>
       {isLoading && <Loading />}
       <div style={modalStyle} className={classes.paper}>
-        <h1>Fetch Crypto from your account</h1>
+        <h1>Deposit crypto from your account</h1>
         <div
           style={{
             display: "flex",
@@ -100,7 +100,6 @@ export default function FetchModal(props) {
             justifyContent: "center",
           }}
         >
-          maxAmount-
           <div style={{ fontWeight: 600, fontSize: 40 }}>{balance}$</div>
         </div>
         <div className={classes.boxtitle}>Enter amount</div>
@@ -112,7 +111,7 @@ export default function FetchModal(props) {
         />
 
         <Button className={classes.confirmbutton} onClick={fetchCrypto}>
-          Fetch
+          Deposit
         </Button>
         {exceed && (
           <p style={{ color: "red", marginTop: 0 }}>Not enough money</p>

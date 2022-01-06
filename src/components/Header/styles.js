@@ -8,6 +8,7 @@ export default makeStyles((theme) => ({
     fontSize: "16px",
     alignItems: "center",
     display: "flex",
+    paddingLeft: 80,
     justifyContent: "space-between",
     "@media (max-width:600px)": {
       width: "100%",

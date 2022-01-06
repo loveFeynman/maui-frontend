@@ -8,7 +8,6 @@ import Sidebar from "../Sidebar";
 import Header from "../Header";
 import Footer from "../Footer/footer";
 import Mobileheader from "../Mobileheader";
-import Stocks from "../Stocks";
 // pages
 import Dashboard from "../../pages/dashboard";
 import Deposit from "../../pages/deposit";
@@ -24,7 +23,6 @@ function Layout(props) {
   const pagestate = useSelector((state) => state.sidebar.listlabel);
   var [isPermanent, setPermanent] = useState(true);
   const key = useSelector((state) => state.user.user.accAddress);
-  console.log(key);
   // connect a wallet when mounting
   useEffect(() => {
     dispatch({ type: "WALLET_INFO", payload: key });
@@ -39,7 +37,7 @@ function Layout(props) {
   });
 
   return (
-    <div style={{ width: "100%", background: "#EDEDF9" }}>
+    <div style={{ width: "100%", background: "#EDEDF9", paddingBottom: 20 }}>
       <ToastContainer />
       <div className={classes.root}>
         <Sidebar />
@@ -48,15 +46,13 @@ function Layout(props) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            top: 0,
+            height: "100%",
           }}
         >
           {isPermanent ? <Header /> : <Mobileheader />}
           <div className={classes.dashboard}>
-            <div
-              className={
-                pagestate === "Stocks" ? classes.stocksboard : classes.mainboard
-              }
-            >
+            <div className={classes.mainboard}>
               <Slide
                 direction={pagestate === "Dashboard" ? "up" : "down"}
                 in={pagestate === "Dashboard"}
@@ -128,16 +124,6 @@ function Layout(props) {
                 </div>
               </Slide>
             </div>
-            <Slide
-              direction={pagestate === "Stocks" ? "down" : "up"}
-              in={pagestate !== "Stocks"}
-              mountOnEnter
-              unmountOnExit
-            >
-              <div>
-                <Stocks />
-              </div>
-            </Slide>
             {!isPermanent && <Footer />}
           </div>
         </div>

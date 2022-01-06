@@ -33,7 +33,7 @@ export default function Deposit(props) {
       )}
       {isFull && (
         <div style={{ fontSize: 30, marginBottom: 20 }}>
-          $<span style={{ fontWeight: 600 }}>{depositAmount}</span>USD
+          USD<span style={{ fontWeight: 600 }}>{depositAmount}</span>
         </div>
       )}
       <div>

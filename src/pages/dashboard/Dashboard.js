@@ -34,7 +34,7 @@ export default function Dashboard(props) {
       )}
       {isFull && (
         <div style={{ fontSize: 30 }}>
-          $<span style={{ fontWeight: 600 }}>{depositAmount}</span>USD
+          USD<span style={{ fontWeight: 600 }}>{depositAmount}</span>
         </div>
       )}
       <div>

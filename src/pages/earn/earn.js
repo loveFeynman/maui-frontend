@@ -43,7 +43,6 @@ export default function Earn(props) {
     fetchExpectedInterest();
   }, []);
   useEffect(() => {
-    console.log("tab changes", annualExpectedInterest);
     setExpectedInterest(
       new Dec(annualExpectedInterest)
         .div(period === 2 ? 12 : period === 3 ? 52 : period === 4 ? 365 : 1)
@@ -187,31 +186,32 @@ export default function Earn(props) {
       )}
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         {isFull && (
-          <div style={{ fontSize: 30, marginBottom: 20 }}>
-            $
-            <span style={{ fontWeight: 600 }}>
+          <div style={{ fontSize: 20, marginBottom: 20 }}>
+            AVAILABLE: USD
+            <span style={{ fontWeight: 600, fontSize: 30 }}>
               {totalDepositAmount
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </span>
-            USD($
-            <span style={{ fontWeight: 600 }}>
-              {anchoraccount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </span>
-            USD)
           </div>
         )}
+        <div style={{ fontSize: 20, marginBottom: 20 }}>
+          DEPOSITED: USD
+          <span style={{ fontWeight: 600, fontSize: 30 }}>
+            {anchoraccount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </span>
+        </div>
         <div
           style={{
-            width: 150,
-            height: 45,
+            width: 250,
+            height: 75,
             border: "1px solid #D2D2D2",
             borderRadius: 46,
             textAlign: "center",
-            paddingTop: 5,
+            paddingBottom: 5,
           }}
         >
-          <span style={{ fontSize: 24, fontWeight: 600 }}>18% </span>APY Fixed
+          <span style={{ fontSize: 60, fontWeight: 600 }}>18% </span>APY Fixed
         </div>
       </div>
       <div className={classes.context}>
@@ -321,7 +321,9 @@ export default function Earn(props) {
           <div style={{ width: "100%" }}>
             <div className={classes.subtext}>Withdraw</div>
             <ConfirmButton
-              buttonClass={classes.confirmbutton}
+              buttonClass={
+                checked ? classes.confirmbutton : classes.disabledbutton
+              }
               text="Are you agree?"
               onClick={(e) => confirmDeposit("out")}
               disabled={!checked}

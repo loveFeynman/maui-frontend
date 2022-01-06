@@ -43,6 +43,7 @@ export default makeStyles((theme) => ({
     marginTop: 8,
     fontSize: 24,
     fontWeight: 600,
+    textAlign: "center",
   },
   subtext: {
     marginLeft: 18,
@@ -81,33 +82,17 @@ export default makeStyles((theme) => ({
   },
   duration: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
   chartblock: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     padding: "30px 0px 0px 0",
     "@media (max-width:600px)": {
       flexDirection: "column",
     },
   },
-  slider: {
-    width: 228,
-    height: 300,
-    background: "#EBEBF8",
-    borderRadius: 10,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignItems: "center",
-    marginBottom: 20,
-    boxShadow:
-      "-9px -13px 37px rgba(255, 255, 255, 0.8), 9px 17px 37px rgba(0, 0, 0, 0.13)",
-    "@media (max-width:600px)": {
-      alignSelf: "center",
-      width: "100%",
-    },
-  },
+
   chart: {
     width: 399,
     height: 300,
@@ -128,7 +113,7 @@ export default makeStyles((theme) => ({
   },
   firstpart: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     "@media (max-width:600px)": {
       flexDirection: "column",
     },

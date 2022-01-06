@@ -5,7 +5,7 @@ import { useTheme } from "@material-ui/styles";
 const series = [
   {
     name: "series1",
-    data: [31, 40, 28, 51, 42],
+    data: [3.1, 4.0, 2.8, 5.1, 4.2, 3.9, 5.7, 6.3, 4.8, 7.1, 2.4, 5.4],
   },
 ];
 
@@ -33,11 +33,31 @@ function themeOptions(theme) {
       curve: "smooth",
     },
     xaxis: {
-      categories: ["aug", "sep", "oct", "nov", "dec"],
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Api",
+        "Jun",
+        "July",
+        "Aug",
+        "sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
       // categories: [1, 2, 3, 4, 5],
+      // type: "datetime",
     },
     fill: {
-      colors: [theme.palette.primary.light, theme.palette.success.light],
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        inverseColors: false,
+        opacityFrom: 0.5,
+        opacityTo: 0,
+        stops: [0, 90, 100],
+      },
     },
     colors: [theme.palette.primary.main, theme.palette.success.main],
     chart: {
