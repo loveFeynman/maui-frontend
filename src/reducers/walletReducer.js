@@ -1,5 +1,5 @@
 const initialState = {
-  walletInfo: "",
+  walletInfo: 0,
 };
 
 const reducer = (state = initialState, action) => {

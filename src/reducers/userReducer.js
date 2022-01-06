@@ -2,6 +2,7 @@ const initialState = {
   user: {},
   token: "",
   isAuthenticated: false,
+  walletAddress: "",
 };
 const reducer = (state = initialState, action) => {
   if (action.type === "LOGIN_SUCCESS" || action.type === "GET_USER_SUCCESS") {
@@ -19,6 +20,11 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       isAuthenticated: false,
+    };
+  } else if (action.type === "WALLET_ADDRESS") {
+    return {
+      ...state,
+      walletAddress: action.payload,
     };
   } else return state;
 };

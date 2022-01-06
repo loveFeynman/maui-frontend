@@ -38,4 +38,9 @@ export default makeStyles((theme) => ({
     width: 28,
     height: 28,
   },
+  connectWallet: {
+    border: "ridge",
+    borderRadius: 10,
+    borderColor: "#62B8E8",
+  },
 }));

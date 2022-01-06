@@ -2,21 +2,12 @@ import { takeEvery, put, call, all } from "redux-saga/effects";
 import request from "../common/fetch";
 import { fetchBalance } from "../wallet";
 function* callLogin(action) {
+  console.log("saga", action);
   yield call(
     request({
-      type: "LOGIN",
+      type: "GET_USER",
       method: "post",
       url: "login",
-    }),
-    action,
-  );
-}
-function* callRegister(action) {
-  yield call(
-    request({
-      type: "REGISTER",
-      method: "post",
-      url: "register",
     }),
     action,
   );
@@ -29,15 +20,6 @@ function* callWallet(action) {
       url: "wallet/walletcontrol",
     }),
     action,
-  );
-}
-function* callUserInfo() {
-  yield call(
-    request({
-      type: "GET_USER",
-      method: "get",
-      url: "/token",
-    }),
   );
 }
 function walletInfoAction(action) {
@@ -53,11 +35,9 @@ function* callWalletInfo(action) {
   }
 }
 function* somethingSaga() {
-  yield takeEvery("LOGIN_REQUEST", callLogin);
-  yield takeEvery("REGISTER_REQUEST", callRegister);
+  yield takeEvery("GET_USER_REQUEST", callLogin);
   yield takeEvery("WALLET_CONTROL", callWallet);
   yield takeEvery("WALLET_INFO", callWalletInfo);
-  yield takeEvery("GET_USER", callUserInfo);
 }
 
 export default function* mySaga() {

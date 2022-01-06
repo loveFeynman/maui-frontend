@@ -26,7 +26,7 @@ function Layout(props) {
   // connect a wallet when mounting
   useEffect(() => {
     dispatch({ type: "WALLET_INFO", payload: key });
-  }, []);
+  }, [key]);
 
   useEffect(function () {
     window.addEventListener("resize", handleWindowWidthChange);

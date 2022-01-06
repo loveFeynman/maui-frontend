@@ -1,5 +1,5 @@
 export const appConfig = {
-  apiUrl: "https://maui-backend-app.herokuapp.com/",
+  apiUrl: "http://localhost:4000",
   userPoolId:
     process.env.REACT_APP_COGNITO_USERPOOL_ID || "us-west-2_4zMJrFJnK",
   clientId:
