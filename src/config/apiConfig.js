@@ -1,5 +1,5 @@
 export const appConfig = {
-  apiUrl: "http://localhost:4000",
+  apiUrl: "https://obscure-wave-83197.herokuapp.com/",
   userPoolId:
     process.env.REACT_APP_COGNITO_USERPOOL_ID || "us-west-2_4zMJrFJnK",
   clientId:
