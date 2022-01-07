@@ -18,7 +18,7 @@ import useStyles from "./styles";
 export default function Earn(props) {
   var classes = useStyles();
   const isFull = useSelector((state) => state.sidebar.isDefault);
-  const account = useSelector((state) => state.user.account);
+  const account = useSelector((state) => state.wallet.walletInfo);
   const [value, setValue] = useState(0);
   const tabChange = (event, newValue) => {
     setValue(newValue);

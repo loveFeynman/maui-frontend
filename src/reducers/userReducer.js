@@ -26,6 +26,15 @@ const reducer = (state = initialState, action) => {
       ...state,
       walletAddress: action.payload,
     };
+  } else if (action.type === "CLEAR_USER") {
+    localStorage.removeItem("idToken");
+    return {
+      ...state,
+      user: {},
+      token: "",
+      isAuthenticated: false,
+      walletAddress: "",
+    };
   } else return state;
 };
 export default reducer;

@@ -1,14 +1,16 @@
 import React from "react";
 import useStyles from "./styles";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
 import { useWallet, WalletStatus } from "@terra-money/wallet-provider";
 import FetchModal from "./components/FetchModal";
 import Modal from "@material-ui/core/Modal";
+
 export default function Crypto(props) {
   var classes = useStyles();
   const accAddress = useSelector((state) => state.user.user.accAddress);
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
   const {
     connect,
     status,
@@ -55,7 +57,9 @@ export default function Crypto(props) {
                     color="primary"
                     key={"connect-" + connectType}
                     className={classes.confirmbutton}
-                    onClick={() => connect(connectType)}
+                    onClick={() => {
+                      connect(connectType);
+                    }}
                   >
                     Connect Wallet
                   </Button>
@@ -68,7 +72,10 @@ export default function Crypto(props) {
             variant="contained"
             color="primary"
             className={classes.confirmbutton}
-            onClick={() => disconnect()}
+            onClick={() => {
+              disconnect();
+              dispatch({ type: "CLEAR_USER" });
+            }}
           >
             Disconnect
           </Button>

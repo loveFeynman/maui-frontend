@@ -37,7 +37,14 @@ function Layout(props) {
   });
 
   return (
-    <div style={{ width: "100%", background: "#EDEDF9", paddingBottom: 20 }}>
+    <div
+      style={{
+        width: "100%",
+        background: "#EDEDF9",
+        paddingBottom: 20,
+        heigth: "100%",
+      }}
+    >
       <ToastContainer />
       <div className={classes.root}>
         <Sidebar />
@@ -45,7 +52,6 @@ function Layout(props) {
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
             top: 0,
             height: "100%",
           }}

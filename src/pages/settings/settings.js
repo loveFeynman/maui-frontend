@@ -14,13 +14,10 @@ export default function Earn(props) {
     <Grid container>
       <Grid item xs={12}>
         <div className={classes.title}>
-          <div>Earn</div>
+          <div>Settings</div>
           <IconButton aria-label="delete">
             <MenuIcon />
           </IconButton>
-        </div>
-        <div style={{ fontSize: 30, marginBottom: 20 }}>
-          $<span style={{ fontWeight: 600 }}>3,234.08</span>USD
         </div>
       </Grid>
     </Grid>
