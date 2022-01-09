@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { IconButton, Tabs, Tab } from "@material-ui/core";
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { Tabs, Tab } from "@material-ui/core";
 
 import Fiat from "./Fiat/fiat";
 import Crypto from "./crypto/crypto";
@@ -26,14 +25,14 @@ export default function Deposit(props) {
       {isFull && (
         <div className={classes.title}>
           <div>Deposit</div>
-          <IconButton aria-label="delete">
-            <MenuIcon />
-          </IconButton>
         </div>
       )}
       {isFull && (
         <div style={{ fontSize: 30, marginBottom: 20 }}>
-          USD<span style={{ fontWeight: 600 }}>{depositAmount}</span>
+          USD
+          <span style={{ fontWeight: 600, marginLeft: 10 }}>
+            {depositAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </span>
         </div>
       )}
       <div>

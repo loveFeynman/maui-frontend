@@ -1,8 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Avatar } from "@material-ui/core";
-import helpicon from "../../images/help.png";
-import telegram from "../../images/telegramletter.png";
 // styles
 import useStyles from "./styles";
 

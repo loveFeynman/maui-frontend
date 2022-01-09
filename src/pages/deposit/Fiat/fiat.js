@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import {
@@ -41,16 +41,16 @@ const currencies = [
 export default function Fiat(props) {
   var classes = useStyles();
   const [currency, setCurrency] = useState(currencies[0].value);
-  const [fee, setfee] = useState(0);
+  // const [fee, setfee] = useState(0);
   const [feecheck, setfeecheck] = useState(true);
   const [agree, setAgree] = useState(false);
   const [amount, setamount] = useState(0);
   const accAddress = useSelector((state) => state.user.user.accAddress);
 
-  useEffect(() => {
-    if (feecheck) setfee(amount / 50);
-    else setfee(0);
-  }, [feecheck, amount]);
+  // useEffect(() => {
+  //   if (feecheck) setfee(amount / 50);
+  //   else setfee(0);
+  // }, [feecheck, amount]);
 
   const currencyChange = (event) => {
     setCurrency(event.target.value);
