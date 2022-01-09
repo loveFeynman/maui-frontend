@@ -160,7 +160,7 @@ export default function Earn(props) {
         },
         fail: () => {
           setLoading(false);
-          toast.fail("Your deposit was failed. Try it again.");
+          toast.error("Your deposit was failed. Try it again.");
         },
         success: (e) => {
           fetchExpectedInterest();
