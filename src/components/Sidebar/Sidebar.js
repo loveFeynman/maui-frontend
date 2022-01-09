@@ -23,9 +23,7 @@ const structure = [
   { id: 0, label: "Dashboard" },
   { id: 1, label: "Earn" },
   { id: 2, label: "Borrow" },
-  { id: 3, label: "Stocks" },
   { id: 4, label: "Cards" },
-  { id: 5, label: "Settings" },
 ];
 
 function Sidebar() {

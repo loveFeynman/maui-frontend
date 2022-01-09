@@ -72,9 +72,9 @@ const PrettoSlider = withStyles({
 const CustomSlider = (props) => {
   const classes = useStyles();
   // const { title, value } = props;
-  const [collateral, setcollateral] = React.useState(0);
-  const [borrowed, setborrowed] = React.useState(0);
-  const [apy, setapy] = React.useState(0);
+  const [collateral, setcollateral] = React.useState(50);
+  const [borrowed, setborrowed] = React.useState(50);
+  const [apy, setapy] = React.useState(50);
   React.useEffect(() => {
     props.onChange(collateral, borrowed, apy);
   }, [collateral, borrowed, apy]);

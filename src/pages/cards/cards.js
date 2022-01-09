@@ -26,7 +26,10 @@ export default function Earn(props) {
       )}
       {isFull && (
         <div style={{ fontSize: 30, marginBottom: 20 }}>
-          USD<span style={{ fontWeight: 600 }}>{account}</span>
+          USD{" "}
+          <span style={{ fontWeight: 600, marginLeft: 10 }}>
+            {account.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </span>
         </div>
       )}
       <div className={classes.context}>

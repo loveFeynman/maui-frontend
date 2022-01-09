@@ -83,9 +83,6 @@ export default makeStyles((theme) => ({
     borderRadius: 16,
     boxShadow: "4px 7px 12px rgba(0, 0, 0, 0.1)",
     background: "grey",
-    "@media (max-width:600px)": {
-      width: "100%",
-    },
   },
   firstpart: {
     width: 440,

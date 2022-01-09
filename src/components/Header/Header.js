@@ -24,23 +24,19 @@ export default function Header() {
   return (
     <div className={classes.root}>
       <div className={classes.text}>{nowString}</div>
-      <div className={classes.rightpart}>
-        <Button
-          onClick={(e) => {
-            dispatch({
-              type: "LIST_CHANGED",
-              listKey: "Deposit",
-            });
-          }}
-          className={classes.headerButton}
-          color="primary"
-          variant="contained"
-        >
-          DEPOSIT
-        </Button>
-        <Avatar alt="help" src={helpicon} className={classes.avatarSize} />
-        <Avatar alt="telegram" src={telegram} className={classes.avatarSize} />
-      </div>
+      <Button
+        onClick={(e) => {
+          dispatch({
+            type: "LIST_CHANGED",
+            listKey: "Deposit",
+          });
+        }}
+        className={classes.headerButton}
+        color="primary"
+        variant="contained"
+      >
+        DEPOSIT
+      </Button>
     </div>
   );
 }

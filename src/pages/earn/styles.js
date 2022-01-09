@@ -6,8 +6,7 @@ export default makeStyles((theme) => ({
     justifyContent: "space-between",
     marginTop: 10,
     marginBottom: 20,
-    fontSize: 30,
-    fontWeight: "bold",
+    alignItems: "center",
   },
   context: {
     width: "100%",
@@ -31,6 +30,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     marginBottom: 20,
+    alignItems: "center",
     "@media (max-width:600px)": {
       flexDirection: "column",
     },
@@ -129,5 +129,20 @@ export default makeStyles((theme) => ({
       top: 10,
       right: 10,
     },
+  },
+  earnButton: {
+    alignItems: "center",
+    textDecoration: "none",
+    textTransform: "none",
+    borderRadius: "14px",
+    height: 50,
+    width: 180,
+    padding: "13px, 45px, 13px, 45px",
+    boxShadow: "4px 6px 15px 0px #00000021",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  chartArea: {
+    left: 0,
   },
 }));

@@ -38,9 +38,7 @@ export default function FetchModal(props) {
   });
 
   const fetchBalance = async () => {
-    console.log(terra);
     const currentBalance = await terra.bank.balance(from);
-    console.log("current balance", currentBalance);
     const balance = new Dec(currentBalance[0]._coins.uusd.amount)
       .div(1000000)
       .toNumber()

@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { IconButton, OutlinedInput, Checkbox } from "@material-ui/core";
+import { OutlinedInput, Checkbox, Button } from "@material-ui/core";
 
 // anchor
 import { LCDClient, Dec } from "@terra-money/terra.js";
 import { MICRO, BLOCKSPERYEAR, FEE } from "../../constants.js";
-
-// icons
-import { Menu as MenuIcon } from "@material-ui/icons";
 
 import ApexLineChart from "./ApexLineChart";
 import ConfirmButton from "../../components/ConfirmButton/confirmButton";
@@ -16,6 +13,7 @@ import { walletControl } from "../../actions/walletAction";
 // styles
 import useStyles from "./styles";
 import Loading from "../../components/Loading/loading";
+import Card from "../../components/Card";
 export default function Earn(props) {
   var classes = useStyles();
   const terra = new LCDClient({
@@ -32,12 +30,12 @@ export default function Earn(props) {
   const [exceed, setExceed] = React.useState(false);
   const [exceedDeposit, setExceedDeposit] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [withdrawAmount, setWithdrawAmount] = React.useState(0);
+  const [withdrawAmount, setWithdrawAmount] = React.useState();
   const [expectedInterest, setExpectedInterest] = React.useState(0);
   const [annualExpectedInterest, setAnnaulExpectedInterest] = React.useState(0);
   const [marketExchangeRate, setMarketExchangeRate] = React.useState(1);
   const [austVal, setAustVal] = React.useState(0);
-  const [depositAmount, setDepositAmount] = React.useState(0);
+  const [depositAmount, setDepositAmount] = React.useState();
 
   useEffect(() => {
     fetchExpectedInterest();
@@ -161,14 +159,16 @@ export default function Earn(props) {
           in_out: id,
         },
         fail: () => {
-          console.log("fail");
+          setLoading(false);
+          toast.fail("Your deposit was failed. Try it again.");
         },
         success: (e) => {
-          // fetchBalance();
           fetchExpectedInterest();
-          toast.success("Successfully Deposited.");
+          toast.success("Your deposit was successful");
           dispatch({ type: "WALLET_INFO", payload: key });
           setLoading(false);
+          setDepositAmount();
+          setWithdrawAmount();
         },
       }),
     );
@@ -178,58 +178,137 @@ export default function Earn(props) {
     <div>
       {isFull && (
         <div className={classes.title}>
-          <div>Earn</div>
-          <IconButton aria-label="delete">
-            <MenuIcon />
-          </IconButton>
+          <Button className={classes.earnButton}>Earn</Button>
+          <div
+            style={{
+              width: 250,
+              height: 75,
+              border: "1px solid #D2D2D2",
+              borderRadius: 46,
+              textAlign: "center",
+              paddingBottom: 5,
+            }}
+          >
+            <span style={{ fontSize: 60, fontWeight: 600 }}>18% </span>APY Fixed
+          </div>
         </div>
       )}
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {isFull && (
-          <div style={{ fontSize: 20, marginBottom: 20 }}>
+      {isFull && (
+        <div style={{ display: "flex", justifyContent: "flex-start" }}>
+          <div style={{ fontSize: 20, marginBottom: 20, width: "50%" }}>
             AVAILABLE: USD
-            <span style={{ fontWeight: 600, fontSize: 30 }}>
+            <span style={{ fontWeight: 600, marginLeft: 10 }}>
               {totalDepositAmount
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </span>
           </div>
-        )}
-        <div style={{ fontSize: 20, marginBottom: 20 }}>
-          DEPOSITED: USD
-          <span style={{ fontWeight: 600, fontSize: 30 }}>
-            {anchoraccount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-          </span>
+          <div style={{ fontSize: 20, marginBottom: 20 }}>
+            DEPOSITED: USD
+            <span style={{ fontWeight: 600, marginLeft: 10 }}>
+              {anchoraccount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </span>
+          </div>
         </div>
-        <div
-          style={{
-            width: 250,
-            height: 75,
-            border: "1px solid #D2D2D2",
-            borderRadius: 46,
-            textAlign: "center",
-            paddingBottom: 5,
-          }}
-        >
-          <span style={{ fontSize: 60, fontWeight: 600 }}>18% </span>APY Fixed
-        </div>
-      </div>
+      )}
       <div className={classes.context}>
-        <div className={classes.subtitle}>
-          How much would you like to deposit?
-        </div>
         {loading && <Loading />}
         <div className={classes.amount_period}>
           <div>
-            <div className={classes.subtext}>Enter the amount:</div>
+            <div className={classes.subtext}>
+              Enter the amount for an 18% APY{" "}
+              <span
+                style={{
+                  color: "green",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  marginLeft: 10,
+                }}
+              >
+                deposit
+              </span>
+            </div>
             <OutlinedInput
               type="number"
               onChange={inputDepositAmount}
               endAdornment={<div>USD</div>}
               className={classes.amount}
+              value={depositAmount}
             />
             {exceed && <p style={{ color: "red" }}>Not enough money</p>}
+            <div style={{ width: "100%" }}>
+              <div className={classes.subtext}>
+                <Checkbox
+                  style={{ margin: 0, padding: 0 }}
+                  checked={checked}
+                  onChange={(e) => {
+                    setchecked(!checked);
+                  }}
+                />
+                I Agree with{" "}
+                <span style={{ textDecoration: "underline" }}>
+                  Terms and conditions
+                </span>
+              </div>
+              <div style={{ position: "relative" }}>
+                <ConfirmButton
+                  buttonClass={
+                    checked ? classes.confirmbutton : classes.disabledbutton
+                  }
+                  text="Please confirm your deposit for an 18% APY"
+                  onClick={(e) => confirmDeposit("in")}
+                  disabled={!checked}
+                  title="Deposit"
+                />
+              </div>
+            </div>
+
+            <div className={classes.subtext}>
+              Enter amount you would like to{" "}
+              <span
+                style={{
+                  color: "red",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  marginLeft: 10,
+                }}
+              >
+                withdraw
+              </span>
+            </div>
+            <OutlinedInput
+              type="number"
+              onChange={inputWithdrawAmount}
+              endAdornment={<div>USD</div>}
+              className={classes.amount}
+              value={withdrawAmount}
+            />
+            {exceedDeposit && (
+              <p style={{ color: "red" }}>Not enough deposit</p>
+            )}
+            <div style={{ width: "100%" }}>
+              <div className={classes.subtext}>Withdraw</div>
+              <ConfirmButton
+                buttonClass={
+                  checked ? classes.confirmbutton : classes.disabledbutton
+                }
+                text="Are you agree?"
+                onClick={(e) => confirmDeposit("out")}
+                disabled={!checked}
+                title="Withdraw"
+              />
+            </div>
           </div>
+          <Card
+            src="Earn"
+            title="18%APY FIXED"
+            text="Earn on your deposits. Withdraw anytime."
+          />
+        </div>
+      </div>
+      <div className={classes.chartArea}>
+        <div className={classes.subtitle}>Your Expected Earnings</div>
+        <div className={classes.amount_period}>
           <div>
             <div className={classes.subtext}>Choose time period:</div>
             <div className={classes.period}>
@@ -267,8 +346,6 @@ export default function Earn(props) {
               </button>
             </div>
           </div>
-        </div>
-        <div className={classes.amount_period}>
           <div>
             <div className={classes.subtext}>Expected Interest:</div>
             <div className={classes.interest}>
@@ -278,60 +355,7 @@ export default function Earn(props) {
               <div>USD</div>
             </div>
           </div>
-          <div style={{ width: "100%" }}>
-            <div className={classes.subtext}>
-              <Checkbox
-                style={{ margin: 0, padding: 0 }}
-                checked={checked}
-                onChange={(e) => {
-                  setchecked(!checked);
-                }}
-              />
-              I Agree with{" "}
-              <span style={{ textDecoration: "underline" }}>
-                Terms and conditions
-              </span>
-            </div>
-            <div style={{ position: "relative" }}>
-              <ConfirmButton
-                buttonClass={
-                  checked ? classes.confirmbutton : classes.disabledbutton
-                }
-                text="Are you agree?"
-                onClick={(e) => confirmDeposit("in")}
-                disabled={!checked}
-                title="deposit"
-              />
-            </div>
-          </div>
         </div>
-        <div className={classes.amount_period}>
-          <div style={{ marginRight: 20 }}>
-            <div className={classes.subtext}>Enter the Withdraw amount:</div>
-            <OutlinedInput
-              type="number"
-              onChange={inputWithdrawAmount}
-              endAdornment={<div>USD</div>}
-              className={classes.amount}
-            />
-            {exceedDeposit && (
-              <p style={{ color: "red" }}>Not enough deposit</p>
-            )}
-          </div>
-          <div style={{ width: "100%" }}>
-            <div className={classes.subtext}>Withdraw</div>
-            <ConfirmButton
-              buttonClass={
-                checked ? classes.confirmbutton : classes.disabledbutton
-              }
-              text="Are you agree?"
-              onClick={(e) => confirmDeposit("out")}
-              disabled={!checked}
-              title="withdraw"
-            />
-          </div>
-        </div>
-        <div className={classes.subtitle}>Your Expected Earnings</div>
         <div className={classes.subtext}>
           Expected APY based on your deposit
         </div>
