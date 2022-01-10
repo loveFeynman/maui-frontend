@@ -9,6 +9,7 @@ export default makeStyles((theme) => ({
     left: "calc(50% - 50px)",
     height: 100,
     width: 100,
+    opacity: 1,
   },
   loadingWrapper: {
     position: "fixed",
@@ -18,6 +19,13 @@ export default makeStyles((theme) => ({
     left: 0,
     zIndex: 1500,
     background: "grey",
-    opacity: "0.3",
+    opacity: "0.6",
+  },
+  loadingText: {
+    color: "white",
+    fontSize: 20,
+    top: "calc(50% + 50px)",
+    left: "calc(50% - 250px)",
+    position: "absolute",
   },
 }));

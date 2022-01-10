@@ -31,14 +31,15 @@ export default function Dashboard(props) {
         <div className={classes.content}>
           <Card
             src="Earn"
-            title="18%APY FIXED"
+            title="18%APY"
             text="Earn on your deposits. Withdraw anytime."
           />
           <Card
             src="Borrow"
-            title="Borow instantly"
+            title="Borrow instantly"
             title2="Loan repays itself"
             text="Borrow up to 50% of your collateral. No repayments. Your yield pays off your loan!"
+            active={true}
           />
         </div>
         <div className={classes.content}>
@@ -47,11 +48,13 @@ export default function Dashboard(props) {
             title="No Fees. Crypto"
             title2="Mastercards"
             text=" Crypto or Fiat, for choice"
+            active={true}
           />
           <Card
             src="Stocks"
             title="Neutral strategy"
             text="Delta Neutral Strategy with one click."
+            active={true}
           />
         </div>
       </div>

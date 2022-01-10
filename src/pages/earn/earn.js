@@ -151,6 +151,7 @@ export default function Earn(props) {
   const confirmDeposit = (id) => {
     if (!checked) return;
     setLoading(true);
+    // toast.info("Verifying your transaction, please allow few seconds");
     setchecked(false);
     dispatch(
       walletControl({
@@ -179,18 +180,6 @@ export default function Earn(props) {
       {isFull && (
         <div className={classes.title}>
           <Button className={classes.earnButton}>Earn</Button>
-          <div
-            style={{
-              width: 250,
-              height: 75,
-              border: "1px solid #D2D2D2",
-              borderRadius: 46,
-              textAlign: "center",
-              paddingBottom: 5,
-            }}
-          >
-            <span style={{ fontSize: 60, fontWeight: 600 }}>18% </span>APY Fixed
-          </div>
         </div>
       )}
       {isFull && (
@@ -212,7 +201,9 @@ export default function Earn(props) {
         </div>
       )}
       <div className={classes.context}>
-        {loading && <Loading />}
+        {loading && (
+          <Loading text="Verifying your transaction, please wait a few seconds" />
+        )}
         <div className={classes.amount_period}>
           <div>
             <div className={classes.subtext}>
@@ -301,7 +292,7 @@ export default function Earn(props) {
           </div>
           <Card
             src="Earn"
-            title="18%APY FIXED"
+            title="18%APY"
             text="Earn on your deposits. Withdraw anytime."
           />
         </div>

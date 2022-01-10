@@ -18,6 +18,7 @@ export default makeStyles((theme) => ({
   card: {
     height: 355,
     width: 344,
+    position: "relative",
     borderRadius: 26,
     padding: 24,
     background: "linear-gradient(160.71deg, #EFF0FB 9.07%, #E1DEF1 92.22%)",
@@ -43,5 +44,21 @@ export default makeStyles((theme) => ({
     display: "flex",
     // flexDirection: "row",
     justifyContent: "space-between",
+  },
+  banner: {
+    fontSize: 20,
+    color: "red",
+    position: "absolute",
+    left: 0,
+    top: 50,
+    background: "black",
+    transform: "rotate(-45deg)",
+    animation: `$flickerAnimation 2s infinite`,
+    borderRadius: 10,
+  },
+  "@keyframes flickerAnimation": {
+    "0%": { opacity: 0.8 },
+    "50%": { opacity: 0 },
+    "100%": { opacity: 0.8 },
   },
 }));

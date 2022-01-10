@@ -13,11 +13,12 @@ const imgs = {
   Stocks: Stocks,
   Cards: Cards,
 };
-export default function Card({ title, src, text, title2 }) {
+export default function Card({ title, src, text, title2, active }) {
   var classes = useStyles();
   const dispatch = useDispatch();
   return (
     <div className={classes.card}>
+      {active && <div className={classes.banner}>Comming Soon</div>}
       <div className={classes.cardtitle}>{title}</div>
       <div className={classes.cardtitle}>{title2}</div>
       <div className={classes.cardtext}>

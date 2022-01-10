@@ -1,11 +1,12 @@
 import spinner from "../../images/spinner.gif";
 import useStyles from "./styles";
-export default function Loading() {
+export default function Loading({ text }) {
+  console.log("loading", text);
   var classes = useStyles();
   return (
     <div className={classes.loadingWrapper}>
-      {/* <CircularProgress size={72} className={classes.buttonProgress} /> */}
       <img src={spinner} alt="Loading" className={classes.buttonProgress} />
+      <div className={classes.loadingText}>{text}</div>
     </div>
   );
 }
